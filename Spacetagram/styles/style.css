@@ -1,0 +1,7 @@
+#cover-pic {
+	background-image: url("https://apod.nasa.gov/apod/image/2201/thundercloud_dyer_2000.jpg");
+	background-position: center;
+	background-size: cover;
+	padding-top: 20% !important;
+	padding-bottom: 20% !important;
+}

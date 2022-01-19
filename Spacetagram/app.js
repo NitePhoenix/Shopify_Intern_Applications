@@ -61,7 +61,7 @@ function makeMoreCards(){
 	var cardContainer = document.getElementById("card-container");
 	var moreCards;
 	for (var i = 0; i < 7; i++){
-		moreCards = '<div class="col"><div class="card-header" id="img-title'+imgDataPt+'"></div><div id="img-container"><img src="" id="img-picture'+imgDataPt+'" alt="Astronomy image by NASA" class="card-img-top"><div id = "like-animation'+imgDataPt+'" style="display:none; "><i class="bi bi-heart-fill" id="like-icon"></i></div></div><div class="card-body"><p class="card-text pt-1 text-start" id="img-explanation'+imgDataPt+'"></p></div><div class="card-footer text-muted"><span class="lh-lg" id="img-date'+imgDataPt+'"></span><input type="checkbox" class="btn-check text-end" id="btn-check-outlined'+imgDataPt+'" autocomplete="off" /><label class="btn btn-outline-danger float-end" for="btn-check-outlined'+imgDataPt+'" onClick="animateLike('+imgDataPt+')"><i class="bi bi-heart"></i></label></div></div>'
+		moreCards = '<div class="col"><div class="card-header text-center" id="img-title'+imgDataPt+'"></div><div id="img-container"><img src="" id="img-picture'+imgDataPt+'" alt="Astronomy image by NASA" class="card-img-top"><div class = "position-absolute top-50 start-50 translate-middle" id = "like-animation'+imgDataPt+'" style="display:none; "><i class="bi bi-heart-fill" id="like-icon"></i></div></div><div class="card-body"><p class="card-text pt-1 text-start" id="img-explanation'+imgDataPt+'"></p></div><div class="card-footer text-muted"><span class="lh-lg" id="img-date'+imgDataPt+'"></span><input type="checkbox" class="btn-check text-end" id="btn-check-outlined'+imgDataPt+'" autocomplete="off" /><label class="btn btn-outline-danger float-end" for="btn-check-outlined'+imgDataPt+'" onClick="animateLike('+imgDataPt+')"><i class="bi bi-heart"></i></label></div></div>'
 		if (document.getElementById('img-title'+imgDataPt) == null){
 			cardContainer.innerHTML+=moreCards;
 		}
@@ -73,13 +73,22 @@ function makeMoreCards(){
 
 function animateLike(pt){
 	// heart animation overlay when "liked"
-	// TODO fix animation position, update checkbox
+	// TODO checkbox state after makeMoreCards()
+	const check = document.getElementById('btn-check-outlined'+pt);
 	const element = document.getElementById('like-animation'+pt);
+	check.classList.toggle('active')
 	element.classList.add('animate__animated')
 	element.classList.toggle('animate__fadeOutUp')
 	element.classList.toggle('animate__delay-1s')
-	if (element.style.display === "none"){ element.style.display = "block"; }
-	else { element.style.display = "none" }
+
+	if (!check.checked) { // opposite, box is checked
+		check.setAttribute('aria-pressed', 'true');
+		element.style.display="block";
+	}
+	else {
+		check.removeAttribute('aria-pressed');
+		element.style.display="none";
+	}
 }
 
 // checks if user has scrolled to the bottom, loads more content

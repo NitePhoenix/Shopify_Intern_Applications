@@ -1,7 +1,21 @@
 #cover-pic {
-	background-image: url("https://apod.nasa.gov/apod/image/2201/thundercloud_dyer_2000.jpg");
+	background-image: url("https://apod.nasa.gov/apod/image/1501/VelaSNR-3_bigCedic.jpg");
 	background-position: center;
 	background-size: cover;
 	padding-top: 20% !important;
 	padding-bottom: 20% !important;
+}
+
+#img-container {
+	position: relative;
+}
+
+#like-icon {
+	position: absolute;
+	bottom: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	color: #dc3545;
+	font-size: 5rem;
 }
